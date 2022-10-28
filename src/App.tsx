@@ -3,6 +3,7 @@ import React, { useReducer, useState } from 'react';
 import './App.css';
 import User from './components/User';
 import Counter from './components/Counter';
+import { act } from 'react-dom/test-utils';
 
 export const initialState = {count: 0}
 
@@ -10,7 +11,7 @@ export type ACTIONTYPE =
 
 |{type: "increment" ; payload: number}
 |{type: "decrement" ; payload: number}
-|{type: "incByFive" , payload: number}
+|{type: "incByFive" , payload: number | string}
 
 const reducerFunc = (state: typeof initialState, action: ACTIONTYPE ) => {
     console.log("state", state, action.payload);
@@ -26,10 +27,16 @@ const reducerFunc = (state: typeof initialState, action: ACTIONTYPE ) => {
             count: state.count - 1
         }
 
-        case "incByFive": return{
+        case "incByFive": {
+          if(typeof action.payload === "string"){
+            let num = Number(action.payload)
+            return {count: state.count + num}
+          }
+
+          
          
           
-            count: state.count + action.payload
+           return  {count: state.count + action.payload}
         }
         default:
             throw new Error()
