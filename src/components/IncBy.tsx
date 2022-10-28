@@ -4,11 +4,11 @@ import { CounterProp } from './Counter'
 
 
 const IncBy = ({increase, decrease, incByFive, dispatch}: CounterProp) => {
-    const [value, setValue] = useState(1)
+    const [value, setValue] = useState<string>('')
     
   return (
     <div>
-        <input type="text" value={value} onChange ={(e) => setValue (e.target.value})}/>
+        <input type="text" value={value} onChange ={(e) => setValue (e.target.value) } />
 
         
     <button onClick={() => dispatch({type: "increment", payload: 7})}>{increase}</button>
