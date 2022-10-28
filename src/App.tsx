@@ -3,7 +3,7 @@ import React, { useReducer, useState } from 'react';
 import './App.css';
 import User from './components/User';
 import Counter from './components/Counter';
-import { act } from 'react-dom/test-utils';
+
 
 export const initialState = {count: 0}
 
@@ -30,7 +30,7 @@ const reducerFunc = (state: typeof initialState, action: ACTIONTYPE ) => {
         case "incByFive": {
           if(typeof action.payload === "string"){
             let num = Number(action.payload)
-            return {count: state.count + num}
+            return {count: state.count + Number(action.payload) }
           }
 
           
