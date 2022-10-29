@@ -23,16 +23,16 @@ const User = ({name, isLogIn, age, skills, user, setUser, setIsLogin}:userProp
     <div>
      
      <p>{age}</p>
-     <p>{skills.map((skill) => <li key={skill}>{skill}</li>)}</p>
+     <ul>{skills.map((skill) => <li key={skill}>{skill}</li>)}</ul>
      <button onClick={
 
       () => {setIsLogin(!isLogIn)
-        setUser("Admin")
+        setUser("Muhammed Jamiu")
       }
       
       
 
-      }>Toggle</button>
+      }>{isLogIn ? "Close": "Toggle"}</button>
      <p>{isLogIn 
      ? user
      : ''}</p> 
