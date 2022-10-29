@@ -48,11 +48,12 @@ const reducerFunc = (state: typeof initialState, action: ACTIONTYPE ) => {
 function App() {
     const [state, dispatch] =  useReducer(reducerFunc, initialState)
    const [user, setUser] = useState<string | null>(null)
+   const [isLogin, setIsLogin] = useState(false)
 
   let skills = ["React", "TypeScript",]
   return (
     <div className="App">
-      <User name={'User1'} isLogIn={false} age={0} skills={skills} />
+      <User name={'User1'} isLogIn={isLogin} setIsLogin = {setIsLogin} age={0} skills={skills} user = {user} setUser = {setUser} />
       <Counter increase='Increase' decrease='Decrease' incByFive= 'incByFive' state = {state} dispatch = {dispatch} />
     </div>
   );

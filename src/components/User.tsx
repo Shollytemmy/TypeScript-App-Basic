@@ -1,19 +1,21 @@
 import { useState } from "react"
 
 type userProp = {
-    user: string,
-    setUser: string,
+    name:string,
+   user: string | null,
     isLogIn: boolean,
     age: number,
-    skills: string[]
+    skills: string[],
+    setUser: React.Dispatch<React.SetStateAction<string | null>>,
+   setIsLogin: React.Dispatch<React.SetStateAction<boolean>> 
     
     
 }
 
 
 
-const User = ({name, isLogIn, age, skills}: 
-  {name:string, isLogIn: boolean, age: number, skills: string[]}
+const User = ({name, isLogIn, age, skills, user, setUser, setIsLogin}:userProp
+   
   ): JSX.Element => {
    
   
@@ -22,8 +24,18 @@ const User = ({name, isLogIn, age, skills}:
      
      <p>{age}</p>
      <p>{skills.map((skill) => <li key={skill}>{skill}</li>)}</p>
-     <button>Toggle</button>
-     <p>{isLogIn ? name : ''}</p> 
+     <button onClick={
+
+      () => {setIsLogin(!isLogIn)
+        setUser("Admin")
+      }
+      
+      
+
+      }>Toggle</button>
+     <p>{isLogIn 
+     ? user
+     : ''}</p> 
       </div>
   )
 }
